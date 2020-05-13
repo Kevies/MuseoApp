@@ -12,10 +12,16 @@ package data;
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * @param args El main va a contener la creación un objeto "Museo" llamado "ac"
+     * por otro lado va crear un objeto "Login" llamado "iniciarsesion" y despues va a llamar al método "VisualizarLogin" para mostrar poder iniciar sesión.
+     * Y luego va a crearse un objeto "Menu" llamado "menu1".
      */
     public static void main(String[] args) {
-        System.out.println("Hola mundo");
+        Museo ac = new Museo();
+        Login iniciarsesion = new Login();
+        iniciarsesion.VisualizarLogin();
+        Menu menu1 = new Menu();
+        
     }
     
 }
