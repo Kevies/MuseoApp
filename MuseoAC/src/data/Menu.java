@@ -13,12 +13,14 @@ import java.util.Scanner;
  * El menu contiene todos los menus de los distintos tipos de usuario.
  */
 public class Menu extends Main{
+    Zonapeces ejemplo = new Zonapeces();
     int opcionA;
     Scanner sc = new Scanner(System.in);
     /**
      * El constructor del menu.
      */
     public Menu() {
+        ejemplo.anadirExistencias();
     }
     /**
      * El menu del administrador, aqui albergara los distintos métodos en futuras actualizaciones.
@@ -65,8 +67,7 @@ public class Menu extends Main{
                                 break;
                             case 2:
                                 System.out.println("==========================");
-                                //ac.verTodos();
-                                System.out.println("Estas viendo todos los elementos");
+                                ejemplo.verElementos();
                             case 3:
                                 System.out.println("==========================");
                                 //ac.buscar();
