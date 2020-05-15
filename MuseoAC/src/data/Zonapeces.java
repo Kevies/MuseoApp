@@ -59,7 +59,7 @@ public class Zonapeces extends Zonas {
 
     public void mostrarPeces() {
         for (int i = 0; i < listaPeces.size(); i++) {
-            System.out.println("- Pez: " +  listaPeces.get(i).getNombre()+" con horario " + listaPeces.get(i).getHorario());
+            System.out.println("- Pez: " + listaPeces.get(i).getNombre() + " con horario " + listaPeces.get(i).getHorario());
         }
         System.out.println(separador);
     }
@@ -82,8 +82,7 @@ public class Zonapeces extends Zonas {
         System.out.println(separador);
     }
 
-    public void añadirPez() 
-    {
+    public void añadirPez() {
         String nombrePezNuevo, temporadaPezNuevo, habitatPezNuevo, tipoAguaPezNuevo;
         int horarioPezNuevo;
         System.out.println("Introduce el nombre del pez nuevo: ");
@@ -99,13 +98,12 @@ public class Zonapeces extends Zonas {
         listaPeces.add(new Peces(horarioPezNuevo, nombrePezNuevo, temporadaPezNuevo, habitatPezNuevo, false, tipoAguaPezNuevo));
     }
 
-    public void modificarPez() 
-    {
+    public void modificarPez() {
         int pos = 0;
         int opcionA = 0;
         System.out.println(separador);
         System.out.println("¿Qué pez quieres modificar?");
-        pececito=this.buscarPez();
+        pececito = this.buscarPez();
         if (pececito.equalsIgnoreCase("")) {
             System.out.println("no puedes donar un pez que no existe");
         } else {
@@ -114,7 +112,7 @@ public class Zonapeces extends Zonas {
                     pos = i;
                 }
             }
-            while (opcionA!=6) {
+            while (opcionA != 6) {
                 System.out.println();
                 System.out.println("¿Qué quieres modificar?");
                 System.out.println("1.Nombre\n2.Horario\n3.Habitat\n4.Temporada\n5.Tipo de Agua\n6.Salir");
@@ -162,6 +160,26 @@ public class Zonapeces extends Zonas {
             }
         }
     }
+
+    public void eliminarPez() {
+        int pos = 0;
+        System.out.println("¿Qué pez quieres eliminar?");
+        pececito = this.buscarPez();
+        if (pececito.equalsIgnoreCase("")) {
+            System.out.println("no puedes eliminar un pez que no existe");
+        } else {
+            for (int i = 0; i < listaPeces.size(); i++) {
+                if (listaPeces.get(i).getNombre().equalsIgnoreCase(pececito)) {
+                    pos = i;
+                }
+            }
+        listaPeces.remove(pos);
+            System.out.println("Se ha eliminado "+pececito);
+        }
+    }
 }
+
+
+
 
 

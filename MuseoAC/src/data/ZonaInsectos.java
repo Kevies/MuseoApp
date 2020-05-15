@@ -193,5 +193,22 @@ public class ZonaInsectos extends Zonas {
             }
         }
     }
+
+    public void eliminarBicho() {
+        int pos = 0;
+        System.out.println("¿Qué insecto quieres eliminar?");
+        bichito = this.buscarBicho();
+        if (bichito.equalsIgnoreCase("")) {
+            System.out.println("no puedes eliminar un insecto que no existe");
+        } else {
+            for (int i = 0; i < listaBichos.size(); i++) {
+                if (listaBichos.get(i).getNombre().equalsIgnoreCase(bichito)) {
+                    pos = i;
+                }
+            }
+            listaBichos.remove(pos);
+            System.out.println("Se ha eliminado "+bichito);
+        }
+    }
    
 }
