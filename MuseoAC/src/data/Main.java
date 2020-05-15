@@ -20,7 +20,6 @@ public class Main {
         Museo ac = new Museo();
         Login iniciarsesion = new Login();
         iniciarsesion.VisualizarLogin();
-        Menu menu1 = new Menu();
         
     }
     
