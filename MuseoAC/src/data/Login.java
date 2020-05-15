@@ -55,9 +55,9 @@ public class Login extends Menu
                     
                     int tipo2=1;
                     System.out.println("==========================");
-                    System.out.println("Escribe tu nombre de usuario:");
+                    System.out.print("Escribe tu nombre de usuario:");
                     leerUsuarioC = sc.next();
-                    System.out.println("Escribe tu contraseña:");
+                    System.out.print("Escribe tu contraseña:");
                     leerContraseñaC = sc.next();
                     if(leerContraseñaC.equalsIgnoreCase("admin1234"))
                     {

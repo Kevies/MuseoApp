@@ -14,20 +14,23 @@ import java.util.Scanner;
  * y las variables que tienen en comun los menus como las opciones, separadores, mesajes finales...
  */
 public class Menu extends Main{
-    Zonas salas = new Zonas("sala");
-    Zonapeces ejemplo = new Zonapeces("salaspez");
+    Zonas salas[] = new Zonas[4];
+    
+    Zonapeces zonaPez = new Zonapeces("ZonaPeces");
+    ZonaInsectos zonaBichos = new ZonaInsectos("ZonaBichos");
     int opcionA;
     Scanner sc = new Scanner(System.in);
-    String opcionesUsuario="1. Donar elemento\n2. Ver todos los elementos\n3. Buscar elementos\n4. Ver elementos donados\n5. Ver elementos restantes\n6. Salir";
-    String opcionesAdmin="1. Añadir elemento\n2. Modificar elemento\n3. Eliminar elemento \n4. Salir";
-    String separador="==========================";
-    String numfinal="introduce un numero: ";
+    final String OPCIONES_USER="1. Donar elemento\n2. Ver todos los elementos\n3. Buscar elementos\n4. Ver elementos donados\n5. Ver elementos restantes\n6. Salir";
+    final String OPCIONES_ADMIN="1. Añadir elemento\n2. Modificar elemento\n3. Eliminar elemento \n4. Salir";
+    final String SEPARADOR="==========================";
+    final String LINEA_FINAL="introduce un numero: ";
 
     /**
      * El constructor del menu.
      */
     public Menu() {
-        ejemplo.anadirExistencias();
+        zonaPez.añadirPecesExistentes();
+        zonaBichos.añadirBichoExistentes();
 
     }
     /**
@@ -48,17 +51,23 @@ public class Menu extends Main{
      */
     public void menuZona(int tipo)
     {
-        salas.anadirExistencias();
-        System.out.println(separador);
+        salas [0]= new Zonas("Zona Fosiles");
+        salas [1]= new Zonas("Zona Peces");
+        salas [2]= new Zonas("Zona Insectos");
+        salas [3]= new Zonas("Zona obras");
+        System.out.println(SEPARADOR);
         System.out.println("¿A que zona quieres ir?: ");
-        salas.visualizarZonas();
-        System.out.print(numfinal);
+        for (int i = 0; i < salas.length; i++) {
+            System.out.println((i+1)+". "+salas[i].nombreZona);
+        }
+        System.out.println("5. Salir");
+        System.out.print(LINEA_FINAL);
         opcionA=sc.nextInt();
         
         switch(opcionA)
         {
             case 1:
-
+                break;
             case 2:
                 this.menuPeces(tipo);
                 break;
@@ -84,27 +93,27 @@ public class Menu extends Main{
     {
     switch(tipo) {
         case 0:
-            System.out.println(separador);
+            System.out.println(SEPARADOR);
             System.out.println("!!Bienvenido a la zona de Peces¡¡");
-            System.out.println(opcionesUsuario);
-            System.out.println(numfinal);
+            System.out.println(OPCIONES_USER);
+            System.out.println(LINEA_FINAL);
             opcionA = sc.nextInt();
             switch (opcionA) {
                 case 1:
-                    ejemplo.donarPez();
+                    zonaPez.donarPez();
                     break;
                 case 2:
-                    ejemplo.mostrarPeces();
+                    zonaPez.mostrarPeces();
                     break;
                 case 3:
                     System.out.println("¿Qué pez quieres buscar?");
-                    ejemplo.buscarPez();
+                    zonaPez.buscarPez();
                     break;
                 case 4:
-                    ejemplo.mostrarPecesDonados();
+                    zonaPez.mostrarPecesDonados();
                     break;
                 case 5:
-                    ejemplo.mostrarPecesRestantes();
+                    zonaPez.mostrarPecesRestantes();
                     break;
                 case 6:
                     this.menuZona(tipo);
@@ -112,18 +121,19 @@ public class Menu extends Main{
             break;
 
         case 1:
-                System.out.println(separador);
+                System.out.println(SEPARADOR);
                 System.out.println(tipo);
                 System.out.println("!!Bienvenido a la zona de Peces¡¡");
-                System.out.println(opcionesAdmin);
-                System.out.print(numfinal);
+                System.out.println(OPCIONES_ADMIN);
+                System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
-                switch (opcionA) {
+                switch (opcionA) 
+                {
                     case 1:
-                        ejemplo.añadirPez();
+                        zonaPez.añadirPez();
                         break;
                     case 2:
-                        ejemplo.modificarPez();
+                        zonaPez.modificarPez();
                         break;
                     case 3:
                         break;
@@ -143,20 +153,57 @@ public class Menu extends Main{
      */
     public void menuInsectos(int tipo)
     {
-        switch(tipo){
+        switch(tipo)
+        {
             case 0:
-                System.out.println(separador);
+                System.out.println(SEPARADOR);
                 System.out.println("!!Bienvenido a la zona de Insectos¡¡");
-                System.out.println(opcionesUsuario);
-                System.out.print(numfinal);
+                System.out.println(OPCIONES_USER);
+                System.out.print(LINEA_FINAL);
+                opcionA = sc.nextInt();
+                    switch(opcionA)
+                    {
+                        case 1:
+                           zonaBichos.donarBicho();
+                           break;
+                       case 2:
+                           zonaBichos.mostrarBichos();
+                           break;
+                       case 3:
+                           System.out.println("¿Qué pez quieres buscar?");
+                           zonaBichos.buscarBicho();
+                           break;
+                       case 4:
+                           zonaBichos.mostrarBichosDonados();
+                           break;
+                       case 5:
+                           zonaBichos.mostrarBichosRestantes();
+                           break;
+                       case 6:
+                           this.menuZona(tipo);
+                    }
                 break;
             case 1:
-                System.out.println(separador);
+                System.out.println(SEPARADOR);
                 System.out.println("!!Bienvenido a la zona de Insectos¡¡");
-                System.out.println(opcionesAdmin);
-                System.out.print(numfinal);
+                System.out.println(OPCIONES_ADMIN);
+                System.out.print(LINEA_FINAL);
+                opcionA = sc.nextInt();
+                switch (opcionA) 
+                {
+                    case 1:
+                        zonaBichos.añadirBicho();
+                        break;
+                    case 2:
+                        zonaBichos.modificarBicho();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        this.menuZona(tipo);
+                }
                 break;
-    }
+        }
     }
     /**
      * Muestra el menu de la zona de peces, con las opciones para
@@ -167,31 +214,31 @@ public class Menu extends Main{
      */
     public void menuObras(int tipo)
     {
-    System.out.println(separador);
+    System.out.println(SEPARADOR);
     System.out.println("!!Bienvenido a la zona de Artes¡¡");
     System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
-    System.out.print(numfinal);
+    System.out.print(LINEA_FINAL);
     opcionA=sc.nextInt();
         switch(opcionA)
         {
             case 1:
                 if(tipo==0){
-                    System.out.println(separador);
-                    System.out.println(opcionesUsuario);
+                    System.out.println(SEPARADOR);
+                    System.out.println(OPCIONES_USER);
                 }
                 else{
-                    System.out.println(separador);
-                    System.out.println(opcionesAdmin);
+                    System.out.println(SEPARADOR);
+                    System.out.println(OPCIONES_ADMIN);
                 }
                 break;
             case 2:
                 if(tipo==0){
-                    System.out.println(separador);
-                    System.out.println(opcionesUsuario);
+                    System.out.println(SEPARADOR);
+                    System.out.println(OPCIONES_USER);
                 }
                 else{
-                    System.out.println(separador);
-                    System.out.println(opcionesAdmin);
+                    System.out.println(SEPARADOR);
+                    System.out.println(OPCIONES_ADMIN);
                 }
             break;
         }
@@ -205,15 +252,15 @@ public class Menu extends Main{
      */
     public void menuFosiles()
     {
-        System.out.println(separador);
+        System.out.println(SEPARADOR);
         System.out.println("opciones");
-        System.out.println(numfinal);
+        System.out.println(LINEA_FINAL);
         opcionA=sc.nextInt();
         switch(opcionA){}
     }
 
     public int menuModificarPez(){
-        System.out.println(separador);
+        System.out.println(SEPARADOR);
         System.out.println("¿Qué quieres modificar?");
         System.out.println("1. Nombre\n2.Horario\n3.Habitat\n4.Temporada\n5.Tipo de Agua\n6.Salir");
         opcionA = sc.nextInt();

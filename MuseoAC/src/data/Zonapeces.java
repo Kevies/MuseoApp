@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Zonapeces extends Zonas {
     String pececito;
     String separador = "====================";
-    private int stock, suma;
     Scanner sc = new Scanner(System.in);
     ArrayList<Peces> listaPeces = new ArrayList<>();
 
@@ -14,7 +13,7 @@ public class Zonapeces extends Zonas {
         super(nombreZona);
     }
 
-    public void anadirExistencias() {
+    public void añadirPecesExistentes() {
 
         listaPeces.add(new Peces(24, "Atún", "Todo el año", "Muelle", true, "Salada"));
         listaPeces.add(new Peces(24, "Perca", "Todo el año", "Rio", true, "Dulce"));
@@ -60,7 +59,7 @@ public class Zonapeces extends Zonas {
 
     public void mostrarPeces() {
         for (int i = 0; i < listaPeces.size(); i++) {
-            System.out.println("Horario " + listaPeces.get(i).getHorario() + " del pez: " + listaPeces.get(i).getNombre());
+            System.out.println("- Pez: " +  listaPeces.get(i).getNombre()+" con horario " + listaPeces.get(i).getHorario());
         }
         System.out.println(separador);
     }
@@ -83,10 +82,10 @@ public class Zonapeces extends Zonas {
         System.out.println(separador);
     }
 
-    public void añadirPez() {
+    public void añadirPez() 
+    {
         String nombrePezNuevo, temporadaPezNuevo, habitatPezNuevo, tipoAguaPezNuevo;
         int horarioPezNuevo;
-        boolean donadoPezNuevo;
         System.out.println("Introduce el nombre del pez nuevo: ");
         nombrePezNuevo = sc.nextLine();
         System.out.println("Introduce la temporada del pez nuevo: ");
@@ -100,7 +99,8 @@ public class Zonapeces extends Zonas {
         listaPeces.add(new Peces(horarioPezNuevo, nombrePezNuevo, temporadaPezNuevo, habitatPezNuevo, false, tipoAguaPezNuevo));
     }
 
-    public void modificarPez() {
+    public void modificarPez() 
+    {
         int pos = 0;
         int opcionA = 0;
         System.out.println(separador);
