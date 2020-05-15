@@ -17,7 +17,6 @@ public class Main {
      * Y luego va a crearse un objeto "Menu" llamado "menu1".
      */
     public static void main(String[] args) {
-        Museo ac = new Museo();
         Login iniciarsesion = new Login();
         iniciarsesion.VisualizarLogin();
         

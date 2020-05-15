@@ -133,11 +133,13 @@ public class ZonaInsectos extends Zonas {
         int pos = 0;
         int opcionA = 0;
         System.out.println(separador);
-        System.out.println("¿Qué pez quieres modificar?");
+        System.out.println("¿Qué insecto quieres modificar?");
         bichito=this.buscarBicho();
         if (bichito.equalsIgnoreCase("")) {
-            System.out.println("no puedes donar un pez que no existe");
-        } else {
+            System.out.println("no puedes modificar un insecto que no existe");
+        } 
+        else 
+        {
             for (int i = 0; i < listaBichos.size(); i++) {
                 if (listaBichos.get(i).getNombre().equalsIgnoreCase(bichito)) {
                     pos = i;

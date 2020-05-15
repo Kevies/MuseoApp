@@ -18,8 +18,11 @@ public class Menu extends Main{
     
     Zonapeces zonaPez = new Zonapeces("ZonaPeces");
     ZonaInsectos zonaBichos = new ZonaInsectos("ZonaBichos");
+    ZonaObras zonaObras = new ZonaObras("ZonaObras");
+    
     int opcionA;
     Scanner sc = new Scanner(System.in);
+    
     final String OPCIONES_USER="1. Donar elemento\n2. Ver todos los elementos\n3. Buscar elementos\n4. Ver elementos donados\n5. Ver elementos restantes\n6. Salir";
     final String OPCIONES_ADMIN="1. Añadir elemento\n2. Modificar elemento\n3. Eliminar elemento \n4. Salir";
     final String SEPARADOR="==========================";
@@ -31,16 +34,10 @@ public class Menu extends Main{
     public Menu() {
         zonaPez.añadirPecesExistentes();
         zonaBichos.añadirBichoExistentes();
+        zonaObras.añadirEsculturasExistentes();
+        zonaObras.añadirPinturasExistentes();
 
     }
-    /**
-     * El menu del administrador, aqui albergara los distintos métodos en futuras actualizaciones.
-     * (Puede que esto se borre en actualizaciones)
-     */
-    /**
-     * El menu del usuario, aqui albergara los distintos métodos en futuras actualizaciones.
-     * (Puede que esto se borre en actualizaciones)
-     */
 
     /**
      * Este metodo muestra un menu con las zonas que tiene el museo
@@ -148,8 +145,8 @@ public class Menu extends Main{
     /**
      * Muestra el menu de la zona de peces, con las opciones para
      * usuario o admin, respectivamente 
+     * @param tipo es la variable que elgiria el tipo de menu, si es de usuario o admin.
      * 
-     * (falta añadir el int)
      */
     public void menuInsectos(int tipo)
     {
@@ -208,37 +205,120 @@ public class Menu extends Main{
     /**
      * Muestra el menu de la zona de peces, con las opciones para
      * usuario o admin, respectivamente 
-     * 
-     * (falta añadir el int)
-     * (falta un switch dentro de los case para que elija a admin o user, segun lo que elija colocar los metodos o de pintura o de escultura)
+     * @param tipo es la variable que elgiria el tipo de menu, si es de usuario o admin.
      */
     public void menuObras(int tipo)
     {
-    System.out.println(SEPARADOR);
-    System.out.println("!!Bienvenido a la zona de Artes¡¡");
-    System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
-    System.out.print(LINEA_FINAL);
-    opcionA=sc.nextInt();
+        if (tipo==0) 
+        {
+            System.out.println(SEPARADOR);
+            System.out.println("!!Bienvenido a la zona de Artes¡¡");
+            System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
+            System.out.print(LINEA_FINAL);
+            opcionA=sc.nextInt();
+        }
+        else
+        {
+            System.out.println("!!Bienvenido a la zona de Artes¡¡");
+            System.out.print(LINEA_FINAL);
+            opcionA=sc.nextInt();
+        }
+        
         switch(opcionA)
         {
             case 1:
-                if(tipo==0){
+                if(tipo==0)
+                {
+                    final int ARTE=1;
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_USER);
+                    System.out.print(LINEA_FINAL);
+                    opcionA=sc.nextInt();
+                        switch(opcionA)
+                    {
+                        case 1:
+                           zonaObras.donarObra(ARTE);
+                           break;
+                       case 2:
+                           zonaObras.mostrarObras(ARTE);
+                           break;
+                       case 3:
+                           System.out.println("¿Qué obra quieres buscar?");
+                           zonaObras.buscarObra(ARTE);
+                           break;
+                       case 4:
+                           zonaObras.mostrarObrasDonados(ARTE);
+                           break;
+                       case 5:
+                           zonaObras.mostrarObrasRestantes(ARTE);
+                           break;
+                       case 6:
+                           this.menuZona(tipo);
+                    }
+                    
+                    
                 }
-                else{
+                else
+                {
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_ADMIN);
+                    System.out.print(LINEA_FINAL);
+                    opcionA=sc.nextInt();
+                    
                 }
                 break;
             case 2:
-                if(tipo==0){
+                if(tipo==0)
+                {   
+                    final int ARTE=2;
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_USER);
+                    System.out.print(LINEA_FINAL);
+                    opcionA=sc.nextInt();
+                    switch(opcionA)
+                    {
+                        case 1:
+                           zonaObras.donarObra(ARTE);
+                           break;
+                       case 2:
+                           zonaObras.mostrarObras(ARTE);
+                           break;
+                       case 3:
+                           System.out.println("¿Qué obra quieres buscar?");
+                           zonaObras.buscarObra(ARTE);
+                           break;
+                       case 4:
+                           zonaObras.mostrarObrasDonados(ARTE);
+                           break;
+                       case 5:
+                           zonaObras.mostrarObrasRestantes(ARTE);
+                           break;
+                       case 6:
+                           this.menuZona(tipo);
+                    }
                 }
-                else{
+                else
+                {
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_ADMIN);
+                    System.out.print(LINEA_FINAL);
+                    opcionA=sc.nextInt();
+                    switch (opcionA) 
+                    {
+                        case 1:
+                            zonaObras.añadirObra();
+                            break;
+                        case 2:
+                            zonaBichos.modificarBicho();
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            this.menuZona(tipo);
+                            break;
+                    }
+                break;
+                    
                 }
             break;
         }
@@ -257,13 +337,5 @@ public class Menu extends Main{
         System.out.println(LINEA_FINAL);
         opcionA=sc.nextInt();
         switch(opcionA){}
-    }
-
-    public int menuModificarPez(){
-        System.out.println(SEPARADOR);
-        System.out.println("¿Qué quieres modificar?");
-        System.out.println("1. Nombre\n2.Horario\n3.Habitat\n4.Temporada\n5.Tipo de Agua\n6.Salir");
-        opcionA = sc.nextInt();
-        return opcionA;
     }
 }
