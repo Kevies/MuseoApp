@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package data;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -12,11 +9,12 @@ import java.util.Scanner;
  * @author Kevin Martinez y Diego Fernandez
  * La clase de Login que se encargara de poder iniciar sesion segun el tipo de usuario
  */
-public class Login extends Menu
+public class Login
 {
     int opcionLogin;
     String leerUsuarioC, leerContraseñaC;
     public Login() {}
+    Menu menu1 = new Menu();
     /**
      * Este método hace que se vea el menú de opcionLogin y podemos iniciar sesión como usuario o administrador
  Depende de como hemos iniciado sesión llamaremos al metodo "MenuUsuario/MenuAdministrador"
@@ -27,19 +25,37 @@ public class Login extends Menu
         String userpass="usuario1234";
         String adminpass="admin1234";
         
-        
+        opcionLogin=0;
         Scanner sc = new Scanner(System.in);
-        Menu menu1 = new Menu();
         System.out.println("Bienvenido al Museo AC");
-        while (opcionLogin != 3)
-        {
+        
             System.out.println("¿Quieres iniciar sesion como usuario o administrador?\n1. Usuario\n" +
                     "2. Administrador\n3. Salir");
             
-            System.out.print("Escribe un numero: ");
+            int intentos=0;
+            do{
+                System.out.print("Introduce un numero de los indicados: ");
+                try
+                {
+                opcionLogin = sc.nextInt();
+                    sc.nextLine();
+                    intentos++;
+                    if (intentos==3) 
+                    {
+                        System.out.println("Lo siento has superado el numero de intentos");
+                        break;
+                    }
+                }catch(InputMismatchException e)
+                {
+                    System.out.println("caracter no valido se reiniciara la aplicacion");
+                    System.out.println("===================");
+                    this.VisualizarLogin();
+                    break;
+                    
+                }
+                   
+            }while(opcionLogin!=1 && opcionLogin!=2 && opcionLogin!=3);
             
-            opcionLogin = sc.nextInt();
-            sc.nextLine();
             switch(opcionLogin)
             {
                 case 1:
@@ -69,10 +85,9 @@ public class Login extends Menu
                     }
                     break;
                         
-            }
-        break;}
     }
     
     
+    }
 }
     

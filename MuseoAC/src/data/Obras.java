@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package data;
 
 /**
  *
- * @author kevie
+ * @author Kevin Martinez y Diego Fernadez
+ * Esta clase es la superior a obras y esculturas y les proporciona las caracteristicas comunes
+ * y tambien lo metodos para obtener y poner sus valores.
  */
 public class Obras {
     

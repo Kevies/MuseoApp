@@ -1,5 +1,9 @@
 package data;
-
+/**
+ * 
+ * @author Kevin Martinez y diego fernandez
+ * Hereda de especimenes proporcionale las caracteristcas y los metodos de la clase superior
+ */
 public class Peces extends Especimenes{
 
     private String tipoAgua;

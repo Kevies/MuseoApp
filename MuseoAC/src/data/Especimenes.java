@@ -1,5 +1,10 @@
 package data;
-
+/**
+ * 
+ * @author Kevin Martinez y Diego Fernandez
+ * Esta clase es la que proporciona a Insecto y peces las caracteristicas comunes
+ * y tambien lo metodos para obtener y poner sus valores.
+ */
 public class Especimenes {
     private int horario;
     private String nombre, temporada, habitat;

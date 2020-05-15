@@ -1,7 +1,10 @@
 package data;
 
-import java.util.ArrayList;
-
+/**
+ * 
+ * @author Kevin Martinez y diego Fernandez
+ * Esta clase es la que proporciona a las distintas zonas caracteristicas comunes.
+ */
 public class Zonas {
     
     String nombreZona;

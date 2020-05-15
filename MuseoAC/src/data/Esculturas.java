@@ -7,7 +7,8 @@ package data;
 
 /**
  *
- * @author kevie
+ * @author Kevin Martinez y Diego Fenandez
+ * Esta clase hereda de Obras, pasandolo asi atributos que tienen en comun.
  */
 public class Esculturas extends Obras{
     

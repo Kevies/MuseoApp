@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package data;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -12,8 +9,9 @@ import java.util.Scanner;
  * El menu contiene todos los menus de los distintos tipos de usuario.
  * y las variables que tienen en comun los menus como las opciones, separadores, mesajes finales...
  */
-public class Menu extends Main {
-    Zonas salas[] = new Zonas[4];
+public class Menu
+{
+    Zonas salas[] = new Zonas[3];
 
     Zonapeces zonaPez = new Zonapeces("ZonaPeces");
     ZonaInsectos zonaBichos = new ZonaInsectos("ZonaBichos");
@@ -46,32 +44,47 @@ public class Menu extends Main {
      *             cual mostrar
      */
     public void menuZona(int tipo) {
-        salas[0] = new Zonas("Zona Fosiles");
-        salas[1] = new Zonas("Zona Peces");
-        salas[2] = new Zonas("Zona Insectos");
-        salas[3] = new Zonas("Zona obras");
+        salas[0] = new Zonas("Zona Peces");
+        salas[1] = new Zonas("Zona Insectos");
+        salas[2] = new Zonas("Zona obras");
         System.out.println(SEPARADOR);
         System.out.println("¿A que zona quieres ir?: ");
         for (int i = 0; i < salas.length; i++) {
             System.out.println((i + 1) + ". " + salas[i].nombreZona);
         }
-        System.out.println("5. Salir");
+        System.out.println("4. Salir");
         System.out.print(LINEA_FINAL);
-        opcionA = sc.nextInt();
-
+        
+        int intentos=0;
+         try
+        {
+            while(opcionA<1 || opcionA>2)
+            {
+                System.out.print(LINEA_FINAL);
+                opcionA = sc.nextInt();
+                intentos++;
+                if (intentos==3)
+                {
+                    System.out.println("has superado el limite maximo de intentos");
+                    break;
+                }
+            }
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Has introducido un caracter no valido, se cerrara la app");       
+        }
         switch (opcionA) {
             case 1:
-                break;
-            case 2:
                 this.menuPeces(tipo);
                 break;
-            case 3:
+            case 2:
                 this.menuInsectos(tipo);
                 break;
-            case 4:
+            case 3:
                 this.menuObras(tipo);
                 break;
-            case 5:
+            case 4:
                 break;
         }
     }
@@ -92,6 +105,26 @@ public class Menu extends Main {
                 System.out.println(OPCIONES_USER);
                 System.out.println(LINEA_FINAL);
                 opcionA = sc.nextInt();
+                int in = 0;
+                try
+                {
+                    while(opcionA<1 || opcionA>2)
+                    {
+                        System.out.print(LINEA_FINAL);
+                        opcionA = sc.nextInt();
+                        in++;
+                        if (in==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("Has introducido un caracter no valido, se cerrara la app");       
+                }
+                
                 switch (opcionA) {
                     case 1:
                         zonaPez.donarPez();
@@ -121,6 +154,19 @@ public class Menu extends Main {
                 System.out.println(OPCIONES_ADMIN);
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
+                
+                while(opcionA<0 || opcionA>4)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        int intentos=0;
+                        if (intentos==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                
                 switch (opcionA) {
                     case 1:
                         zonaPez.añadirPez();
@@ -154,6 +200,25 @@ public class Menu extends Main {
                 System.out.println(OPCIONES_USER);
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
+                int inte=0;
+                 try
+                    {
+                        while(opcionA<1 || opcionA>2)
+                        {
+                            System.out.print(LINEA_FINAL);
+                            opcionA = sc.nextInt();
+                            inte++;
+                            if (inte==3)
+                            {
+                                System.out.println("has superado el limite maximo de intentos");
+                                break;
+                            }
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("Has introducido un caracter no valido, se cerrara la app");       
+                    }
                 switch (opcionA) {
                     case 1:
                         zonaBichos.donarBicho();
@@ -181,6 +246,19 @@ public class Menu extends Main {
                 System.out.println(OPCIONES_ADMIN);
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
+                
+                while(opcionA<0 || opcionA>4)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        int intentos=0;
+                        if (intentos==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                
                 switch (opcionA) {
                     case 1:
                         zonaBichos.añadirBicho();
@@ -209,8 +287,27 @@ public class Menu extends Main {
         System.out.println(SEPARADOR);
         System.out.println("!!Bienvenido a la zona de Artes¡¡");
         System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
-        System.out.print(LINEA_FINAL);
-        opcionA = sc.nextInt();
+        int intentos=0;
+        
+        try
+        {
+            while(opcionA<1 || opcionA>2)
+            {
+                System.out.print(LINEA_FINAL);
+                opcionA = sc.nextInt();
+                intentos++;
+                if (intentos==3)
+                {
+                    System.out.println("has superado el limite maximo de intentos");
+                    break;
+                }
+            }
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Has introducido un caracter no valido, se cerrara la app");
+        }
+        
         
         if(tipo!=0)
         {
@@ -229,6 +326,20 @@ public class Menu extends Main {
                     System.out.println(OPCIONES_USER);
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
+                    int intentoss=0;
+                    
+                    while(opcionA<0 || opcionA>6)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        intentoss++;
+                        if (intentoss==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                    
                     switch (opcionA) {
                         case 1:
                             zonaObras.donarObra(TIPO_ARTE);
@@ -257,6 +368,19 @@ public class Menu extends Main {
                     final int TIPO_ARTE = 1;
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
+                    int intentosss=0;
+                    while(opcionA<0 || opcionA>4)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        intentosss++;
+                        if (intentosss==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                    
                     switch (opcionA)
                     {
                         case 1:
@@ -283,6 +407,19 @@ public class Menu extends Main {
                     System.out.println(OPCIONES_USER);
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
+                    int intent=0;
+                    while(opcionA<0 || opcionA>6)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        intent++;
+                        if (intent==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                    
                     switch (opcionA) {
                         case 1:
                             zonaObras.donarObra(ARTE);
@@ -309,6 +446,19 @@ public class Menu extends Main {
                 {
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
+                    int ints=0;
+                    while(opcionA<0 || opcionA>4)
+                    {
+                        System.out.print("introduce un numero de los indicados: ");
+                        opcionA = sc.nextInt();
+                        ints++;
+                        if (ints==3)
+                        {
+                            System.out.println("has superado el limite maximo de intentos");
+                            break;
+                        }
+                    }
+                    
                     final int ARTE_TIPO = 2;
                     switch (opcionA) 
                     {
@@ -329,22 +479,6 @@ public class Menu extends Main {
 
                 }
                 break;
-        }
-    }
-
-    /**
-     * Muestra el menu de la zona de peces, con las opciones para
-     * usuario o admin, respectivamente
-     * <p>
-     * (falta añadir el int)
-     * (falta la estructura de los fosiles y las partes)
-     */
-    public void menuFosiles() {
-        System.out.println(SEPARADOR);
-        System.out.println("opciones");
-        System.out.println(LINEA_FINAL);
-        opcionA = sc.nextInt();
-        switch (opcionA) {
         }
     }
 }

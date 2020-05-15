@@ -9,7 +9,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * @author kevie
+ *@author Kevin Martinez y diego Fernandez
+ * Hereda de Zonas y le proporciona el nombre, esta zona tiene dos 
+ * Array list con las pinturas y esculturas respectivamente
+ * de la zona que existen en el listado del museo, que este donado o no, es un valor true o false
+ * eso indicaria su permanecia en el museo.
+ * 
+ * Aqui se generan los metodos que llamara el menu, para poder hacer las funcionalidades de la aplicacion.
  */
 public class ZonaObras extends Zonas {
 
@@ -23,7 +29,9 @@ public class ZonaObras extends Zonas {
     public ZonaObras(String nombreZona) {
         super(nombreZona);
     }
-
+/**
+ * Añade el listado general de Pinturas del museo
+ */
     public void añadirPinturasExistentes() {
 
         listaPint.add(new Pinturas("Cuadro español", "Las Meninas", "Diego de Velazquez", 1656, true, "Óleo sobre lienzo"));
@@ -31,7 +39,9 @@ public class ZonaObras extends Zonas {
         listaPint.add(new Pinturas("Bodegón", "Manzanas y narajas", "Paul Cezanne", 1899, false, "Óleo sobre lienzo"));
 
     }
-
+/**
+ * Añade el listado general de esculturas del museo
+ */
     public void añadirEsculturasExistentes() {
 
         listaEsc.add(new Esculturas("Busto Antiguo", "Busto de Nefertiti", "Thutmose", -1345, true, "Piedra caliza y yeso"));
@@ -39,7 +49,13 @@ public class ZonaObras extends Zonas {
         listaEsc.add(new Esculturas("Estatua alada", "Victoria de Samotracia", "Anonimo", -190, false, "Marmol de Paros"));
 
     }
-
+/**
+ * Se encarga de buscar una obra filtrando si es pintura o escultura.
+ * @param tipo es el numero que servira de filtro para saber si quiere buscar pinturas(1)
+ * o quiere buscar esculturas(!=1)
+ * @return devuelve en caso de encontrar, el nombre sino una String ("") como
+ * valor "vacio"
+ */
     public String buscarObra(int tipo) {
         if (tipo == 1) {
 
@@ -65,7 +81,11 @@ public class ZonaObras extends Zonas {
         System.out.println("No se ha encontrado la obra");
         return "";
     }
-
+/**
+ * Cambia el estado de false a true de una obra que no haya sido donada
+ * @param tipo es el numero que servira de filtro para saber si quiere buscar pinturas(1)
+ * o quiere buscar esculturas(!=1)
+ */
     public void donarObra(int tipo) 
     {
         System.out.println("¿Qué obra quieres donar?");
@@ -104,7 +124,11 @@ public class ZonaObras extends Zonas {
         }
 
     }
-
+/**
+ * Muestra todo el listado de obras, donado o no, separa entre pinturas y esculturas
+ * @param tipo es el numero que servira de filtro para saber si quiere buscar pinturas(1)
+ * o quiere buscar esculturas(!=1) 
+ */
     public void mostrarObras(int tipo) {
         if (tipo == 1) {
             for (int i = 0; i < listaPint.size(); i++) {
@@ -118,7 +142,11 @@ public class ZonaObras extends Zonas {
             System.out.println(SEPARADOR);
         }
     }
-
+/**
+ * Muestra las obras donadas, separa entre pinturas y esculturas
+ * @param tipo es el numero que servira de filtro para saber si quiere buscar pinturas(1)
+ * o quiere buscar esculturas(!=1) 
+ */
     public void mostrarObrasDonados(int tipo) {
         if (tipo == 1) {
             for (int i = 0; i < listaPint.size(); i++) {
@@ -139,7 +167,11 @@ public class ZonaObras extends Zonas {
         }
 
     }
-
+/**
+ * muestra todas las obras que no han sido donadas, separa entre pinturas y esculturas
+ * @param tipo es el numero que servira de filtro para saber si quiere buscar pinturas(1)
+ * o quiere buscar esculturas(!=1)
+ */
     public void mostrarObrasRestantes(int tipo) {
         if (tipo == 1) {
             for (int i = 0; i < listaPint.size(); i++) {
@@ -160,7 +192,9 @@ public class ZonaObras extends Zonas {
     }
 
     /**
-     *
+     * Añade una obra al listado general del museo
+     * @param opcion es el numero que servira de filtro para saber si quieres añadir pinturas(1)
+ * o quieres añadir esculturas(!=1)
      */
     public void añadirObra(int opcion)
     {
@@ -213,7 +247,9 @@ public class ZonaObras extends Zonas {
                 break;
         }
     }
-    
+    /**
+     * modifica un parametro de una pintura especifica
+     */
     public void modificarPintura()
     {
         int pos = 0;
@@ -299,7 +335,9 @@ public class ZonaObras extends Zonas {
         }
     
     }
-    
+    /**
+     * Modifica uno de los parametros de una escultura
+     */
     public void modificarEscultura()
     {
     int pos = 0;
@@ -384,7 +422,9 @@ public class ZonaObras extends Zonas {
         }
     
     }
-    
+    /**
+     * Elmina una pintura del listado general del museo
+     */
     public void eliminarPinturas()
     {
         int pos = 0;
@@ -407,7 +447,9 @@ public class ZonaObras extends Zonas {
             System.out.println("Se ha eliminado " + pinturita);
         }
     }
-    
+    /**
+     * Elmina una escultura del listado general del museo
+     */
     public void eliminarEscultura()
     {
         int pos = 0;
