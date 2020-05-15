@@ -204,57 +204,66 @@ public class Menu extends Main {
      *
      * @param tipo es la variable que elgiria el tipo de menu, si es de usuario o admin.
      */
-    public void menuObras(int tipo) {
-        if (tipo == 0) {
-            System.out.println(SEPARADOR);
-            System.out.println("!!Bienvenido a la zona de Artes¡¡");
-            System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
-            System.out.print(LINEA_FINAL);
-            opcionA = sc.nextInt();
-        } else {
+    public void menuObras(int tipo) 
+    {
+        System.out.println(SEPARADOR);
+        System.out.println("!!Bienvenido a la zona de Artes¡¡");
+        System.out.println("1.Ir a pinturas \n2.Ir a esculturas");
+        System.out.print(LINEA_FINAL);
+        opcionA = sc.nextInt();
+        
+        if(tipo!=0)
+        {
             System.out.println("!!Bienvenido a la zona de Artes¡¡");
             System.out.println(OPCIONES_ADMIN);
-            System.out.print(LINEA_FINAL);
-            opcionA = sc.nextInt();
         }
-
-        switch (opcionA) {
+        
+        
+        switch (opcionA) 
+        {
             case 1:
-                if (tipo == 0) {
-                    final int ARTE = 1;
+                if (tipo == 0) 
+                {
+                    final int TIPO_ARTE = 1;
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_USER);
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     switch (opcionA) {
                         case 1:
-                            zonaObras.donarObra(ARTE);
+                            zonaObras.donarObra(TIPO_ARTE);
                             break;
                         case 2:
-                            zonaObras.mostrarObras(ARTE);
+                            zonaObras.mostrarObras(TIPO_ARTE);
                             break;
                         case 3:
                             System.out.println("¿Qué obra quieres buscar?");
-                            zonaObras.buscarObra(ARTE);
+                            zonaObras.buscarObra(TIPO_ARTE);
                             break;
                         case 4:
-                            zonaObras.mostrarObrasDonados(ARTE);
+                            zonaObras.mostrarObrasDonados(TIPO_ARTE);
                             break;
                         case 5:
-                            zonaObras.mostrarObrasRestantes(ARTE);
+                            zonaObras.mostrarObrasRestantes(TIPO_ARTE);
                             break;
                         case 6:
                             this.menuZona(tipo);
                     }
 
 
-                } else {
-                    switch (opcionA) {
+                } 
+                else 
+                {
+                    final int TIPO_ARTE = 1;
+                    System.out.print(LINEA_FINAL);
+                    opcionA = sc.nextInt();
+                    switch (opcionA)
+                    {
                         case 1:
-                            zonaObras.añadirObra();
+                            zonaObras.añadirObra(TIPO_ARTE);
                             break;
                         case 2:
-                            zonaObras.modificarObra();
+                            zonaObras.modificarPintura();
                             break;
                         case 3:
                             zonaObras.eliminarPinturas();
@@ -267,7 +276,8 @@ public class Menu extends Main {
                 }
                 break;
             case 2:
-                if (tipo == 0) {
+                if (tipo == 0)
+                {
                     final int ARTE = 2;
                     System.out.println(SEPARADOR);
                     System.out.println(OPCIONES_USER);
@@ -292,17 +302,24 @@ public class Menu extends Main {
                             break;
                         case 6:
                             this.menuZona(tipo);
+                            break;
                     }
-                } else {
-
-                    switch (opcionA) {
+                }
+                else 
+                {
+                    System.out.print(LINEA_FINAL);
+                    opcionA = sc.nextInt();
+                    final int ARTE_TIPO = 2;
+                    switch (opcionA) 
+                    {
                         case 1:
-                            zonaObras.añadirObra();
+                            zonaObras.añadirObra(ARTE_TIPO);
                             break;
                         case 2:
-                            zonaObras.modificarObra();
+                            zonaObras.modificarEscultura();
                             break;
                         case 3:
+                            zonaObras.eliminarEscultura();
                             break;
                         case 4:
                             this.menuZona(tipo);

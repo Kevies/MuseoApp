@@ -36,7 +36,7 @@ public class ZonaObras extends Zonas {
 
         listaEsc.add(new Esculturas("Busto Antiguo", "Busto de Nefertiti", "Thutmose", -1345, true, "Piedra caliza y yeso"));
         listaEsc.add(new Esculturas("Cabeza colosal", "Cabeza colosal olmeca", "Anónimo", -1500, true, "Basalto"));
-        listaEsc.add(new Esculturas("Estaatua alada", "Victoria de Samotracia.", "Anonimo", -190, false, "Marmol de Paros"));
+        listaEsc.add(new Esculturas("Estatua alada", "Victoria de Samotracia", "Anonimo", -190, false, "Marmol de Paros"));
 
     }
 
@@ -66,7 +66,8 @@ public class ZonaObras extends Zonas {
         return "";
     }
 
-    public void donarObra(int tipo) {
+    public void donarObra(int tipo) 
+    {
         System.out.println("¿Qué obra quieres donar?");
         if (tipo == 1) {
             pinturita = this.buscarObra(1);
@@ -161,221 +162,272 @@ public class ZonaObras extends Zonas {
     /**
      *
      */
-    public void añadirObra() {
-        String AliasNuevo, NombreNuevo, AutorNuevo, TecnicaNueva, materialNuevo;
+    public void añadirObra(int opcion)
+    {
+        String aliasNuevo, nombreNuevo, autorNuevo, TecnicaNueva, materialNuevo;
         int FechaNueva;
-
-        System.out.println(SEPARADOR);
-        System.out.println("¿Qué quieres donar?");
-        System.out.println("1. Pinturas\n2. Esculturas");
-        System.out.print("Introduce un numero:");
-        int opcion = sc.nextInt();
-
-
         switch (opcion) {
             case 1:
+                
                 System.out.print("Introduce el alias nuevo: ");
-                AliasNuevo = sc.nextLine();
+                aliasNuevo=sc.nextLine();
 
                 System.out.print("Introduce el nombre nuevo: ");
-                NombreNuevo = sc.nextLine();
+                nombreNuevo=sc.next();
 
                 System.out.print("Introduce el Autor de la nueva obra: ");
-                AutorNuevo = sc.nextLine();
+                autorNuevo =sc.next();
 
                 System.out.print("Introduce la fecha de la obra: ");
                 FechaNueva = sc.nextInt();
 
-                System.out.print("¿Que técnica usa?");
-                TecnicaNueva = sc.nextLine();
+                System.out.print("¿Que técnica usa?: ");
+                TecnicaNueva = sc.next();
+                
+                sc.nextLine();
 
-                listaPint.add(new Pinturas(AliasNuevo, NombreNuevo, AutorNuevo, FechaNueva, false, TecnicaNueva));
+                listaPint.add(new Pinturas(aliasNuevo, nombreNuevo, autorNuevo, FechaNueva, false, TecnicaNueva));
+                
+                System.out.println("Se ha añadido una la pintura: "+nombreNuevo);
                 break;
             case 2:
                 System.out.print("Introduce el alias nuevo: ");
-                AliasNuevo = sc.nextLine();
+                aliasNuevo = sc.next();
 
                 System.out.print("Introduce el nombre nuevo: ");
-                NombreNuevo = sc.nextLine();
+                nombreNuevo = sc.next();
 
                 System.out.print("Introduce el Autor de la nueva obra: ");
-                AutorNuevo = sc.nextLine();
+                autorNuevo = sc.next();
 
                 System.out.print("Introduce la fecha de la obra: ");
                 FechaNueva = sc.nextInt();
 
                 System.out.print("¿Que material usa?");
-                materialNuevo = sc.nextLine();
+                materialNuevo = sc.next();
+                
+                sc.nextLine();
 
-                listaEsc.add(new Esculturas(AliasNuevo, NombreNuevo, AutorNuevo, FechaNueva, false, materialNuevo));
+                listaEsc.add(new Esculturas(aliasNuevo, nombreNuevo, autorNuevo, FechaNueva, false, materialNuevo));
+                System.out.println("Se ha añadido la escultura: "+nombreNuevo);
                 break;
         }
     }
-
-    public void modificarObra() {
+    
+    public void modificarPintura()
+    {
         int pos = 0;
-        System.out.println("Quieres modificar:\n1. Una pintura\n2. Una escultura");
-        System.out.print("Introduce un numero:");
-        int opcion = sc.nextInt();
-        System.out.println("Introduce el nombre de la obra: ");
-        pinturita = sc.nextLine();
-        if (opcion == 1) {
-            pinturita = this.buscarObra(opcion);
-            if (pinturita.equalsIgnoreCase("")) {
-                System.out.println("no puedes modificar una obra que no existe");
-            } else {
-                for (int i = 0; i < listaPint.size(); i++) {
-                    if (listaPint.get(i).getNombre().equalsIgnoreCase(pinturita)) {
-                        pos = i;
-                    }
+        int opcionA = 0;
+        System.out.println(SEPARADOR);
+        System.out.println("¿Qué pintura quieres modificar?");
+        pinturita = this.buscarObra(1);
+        if (pinturita.equalsIgnoreCase("")) {
+            System.out.println("no puedes donar una pintura que no existe");
+        } 
+        else 
+        {
+            for (int i = 0; i < listaPint.size(); i++) 
+            {
+                if (listaPint.get(i).getNombre().equalsIgnoreCase(pinturita)) 
+                {
+                    pos = i;
                 }
             }
-        } else {
-            esculturita = this.buscarObra(opcion);
-            if (esculturita.equalsIgnoreCase("")) {
-                System.out.println("no puedes modificar una obra que no existe");
-            } else {
-                for (int i = 0; i < listaEsc.size(); i++) {
-                    if (listaEsc.get(i).getNombre().equalsIgnoreCase(esculturita)) {
-                        pos = i;
-                    }
-                }
-            }
-        }
+            while (opcionA != 7) {
+                System.out.println();
+                System.out.println("¿Qué quieres modificar?");
+                System.out.println("1.Nombre\n2.Alias\n3.Autort\n4.Fecha\n5.Donado\n6.Tecnica\n7.Salir");
+                opcionA = sc.nextInt();
+                System.out.println("Pulsa intro para continuar");
+                sc.nextLine();
+                
 
-        if (pinturita == "" || esculturita == "") {
-            System.out.println("No puedes modificar algo que no existe");
-        } else {
-            System.out.println("¿Qué quieres modificar?");
-            System.out.println("1.Alias\n2.Nombre\n3.Autor\n4.Fecha\n5.Tecnica/Material\n6.Salir");
-            System.out.print("Introduce un número: ");
-            int parte = sc.nextInt();
-            switch (parte) {
-                case 1:
-                    String nuevoAlias;
-                    System.out.println("¿A qué Alias quieres modificar?");
-                    nuevoAlias = sc.next();
-                    if (opcion == 1) {
-                        System.out.print("Se ha modficado el alias de " + listaPint.get(pos).alias);
+                switch (opcionA) 
+                {
+                    case 1:
+                        String nuevoNom;
+                        System.out.println("¿A qué nombre quieres modificar?");
+                        nuevoNom = sc.next();
+                        listaPint.get(pos).setNombre(nuevoNom);
+                        System.out.println("Se ha cambiado el nombre de " + pinturita + " a " + nuevoNom);
+                        break;
+                    case 2:
+                        String nuevoAlias;
+                        System.out.println("escribe un Alias");
+                        nuevoAlias = sc.nextLine();
+                        System.out.println("Se ha cambiado el Alias de " + listaPint.get(pos).getAlias());
                         listaPint.get(pos).setAlias(nuevoAlias);
-                        System.out.print(" a " + nuevoAlias);
-                    } else {
-                        System.out.print("Se ha modficado el alias de " + listaEsc.get(pos).alias);
-                        listaEsc.get(pos).setAlias(nuevoAlias);
-                        System.out.print(" a " + nuevoAlias);
-                    }
-                    break;
-                case 2:
-                    String nuevoNombre;
-                    System.out.println("¿A qué Alias quieres modificar?");
-                    nuevoNombre = sc.next();
-                    if (opcion == 1) {
-                        listaPint.get(pos).setNombre(nuevoNombre);
-                        System.out.print("Se ha modificado el nombre de " + pinturita + " a " + nuevoNombre);
-                    } else {
-                        listaEsc.get(pos).setNombre(nuevoNombre);
-                        System.out.print("Se ha modificado el nombre de " + esculturita + " a " + nuevoNombre);
-                    }
-                    break;
-                case 3:
-                    String nuevoAutor;
-                    System.out.println("¿A qué autor quieres modificar?");
-                    nuevoAutor = sc.next();
-                    if (opcion == 1) {
-                        System.out.print("Se ha modificado el autor de " + listaPint.get(pos).getAutor());
+                        System.out.print(" a " + listaPint.get(pos).getAlias());
+                        break;
+                    case 3:
+                        String nuevoAutor;
+                        System.out.println("Escribe un autor");
+                        nuevoAlias = sc.nextLine();
+                        System.out.println("Se ha cambiado el autor de " + listaPint.get(pos).getAutor());
+                        nuevoAutor = sc.nextLine();
                         listaPint.get(pos).setAutor(nuevoAutor);
-                        System.out.print(" a " + nuevoAutor);
-                    } else {
-                        System.out.print("Se ha modificado el autor de " + listaEsc.get(pos).getAutor());
-                        listaEsc.get(pos).setAutor(nuevoAutor);
-                        System.out.print(" a " + nuevoAutor);
-                    }
-                    break;
-                case 4:
-                    int nuevaFecha;
-                    System.out.println("¿Qué fecha quieres modificar?");
-                    nuevaFecha = sc.nextInt();
-                    if (opcion == 1) {
-                        System.out.print("Se ha modificado la fecha de " + listaPint.get(pos).getFecha());
+                        System.out.print(" a " + listaPint.get(pos).getAutor());
+                        break;
+                    case 4:
+                        int nuevaFecha;
+                        System.out.println("Escribe una fecha");
+                        nuevaFecha = sc.nextInt();
+                        System.out.println("Se ha cambiado la fecha de " + listaPint.get(pos).getFecha());
                         listaPint.get(pos).setFecha(nuevaFecha);
-                        System.out.print(" a " + nuevaFecha);
-                    } else {
-                        System.out.print("Se ha modificado la fecha de " + listaEsc.get(pos).getFecha());
-                        listaEsc.get(pos).setFecha(nuevaFecha);
-                        System.out.print(" a " + nuevaFecha);
-                    }
-                    break;
-                case 5:
-                    String nuevaTM;
-                    System.out.println("¿Qué técnica/material quieres modificar?");
-                    nuevaTM = sc.nextLine();
-                    if (opcion == 1) {
-                        System.out.print("Se ha modificado la tecnica de " + listaPint.get(pos).getTecnicas());
-                        listaPint.get(pos).setTecnicas(nuevaTM);
-                        System.out.println(" a " + nuevaTM);
-                    } else {
-                        System.out.print("Se ha modificado el material de " + listaEsc.get(pos).getMaterial());
-                        listaEsc.get(pos).setMaterial(nuevaTM);
-                        System.out.print(" a " + nuevaTM);
-                    }
-                    break;
-                case 6:
-                    break;
-
+                        System.out.print(" a " + listaPint.get(pos).getFecha());
+                        break;
+                    case 5:
+                        boolean donado;
+                        System.out.println("Cambiar estado de donado:");
+                        donado = sc.nextBoolean();
+                        System.out.println("Se ha cambiado el estado de " + listaPint.get(pos).isDonado());
+                        listaPint.get(pos).setDonado(donado);
+                        System.out.print(" a " + listaPint.get(pos).isDonado());
+                        break;
+                    case 6:
+                        String tecnica;
+                        System.out.println("Escribe la tecnica: ");
+                        tecnica = sc.nextLine();
+                        System.out.println("Se ha cambiado la tecnica de " + listaPint.get(pos).getTecnicas());
+                        listaPint.get(pos).setTecnicas(tecnica);
+                        System.out.print(" a " + listaPint.get(pos).getTecnicas());
+                        break;
+                    case 7:
+                        break;
+                }
             }
-
         }
+    
     }
-
-    /*public void eliminarObra() {
-        int pos = 0, opcionObra;
-        System.out.println("¿Quieres eliminar una pintura o una escultura?");
-        System.out.println("1.Pintura\n2.Escultura");
-        opcionObra = sc.nextInt();
-        if (opcionObra == 1) {
-            System.out.println("¿Qué pintura quieres eliminar?");
-            pinturita = this.buscarObra(opcionObra);
-            if (pinturita.equalsIgnoreCase("")) {
-                System.out.println("no puedes donar un pintura que no existe");
-            } else {
-                for (int i = 0; i < listaPint.size(); i++) {
-                    if (listaPint.get(i).getNombre().equalsIgnoreCase(pinturita)) {
-                        pos = i;
-                    }
+    
+    public void modificarEscultura()
+    {
+    int pos = 0;
+        int opcionA = 0;
+        System.out.println(SEPARADOR);
+        System.out.println("¿Qué escultura quieres modificar?");
+        esculturita = this.buscarObra(2);
+        if (esculturita.equalsIgnoreCase("")) {
+            System.out.println("no puedes donar una escultura que no existe");
+        } 
+        else 
+        {
+            for (int i = 0; i < listaEsc.size(); i++) 
+            {
+                if (listaEsc.get(i).getNombre().equalsIgnoreCase(esculturita)) 
+                {
+                    pos = i;
                 }
-                listaPint.remove(pos);
-                System.out.println("Se ha eliminado " + pinturita);
             }
-        } else {
-            System.out.println("¿Qué escultura quieres eliminar?");
-            esculturita = this.buscarObra(opcionObra);
-            if (esculturita.equalsIgnoreCase("")) {
-                System.out.println("no puedes donar una escultura que no existe");
-            } else {
-                for (int i = 0; i < listaEsc.size(); i++) {
-                    if (listaEsc.get(i).getNombre().equalsIgnoreCase(esculturita)) {
-                        pos = i;
-                    }
+            while (opcionA != 7) {
+                System.out.println();
+                System.out.println("¿Qué quieres modificar?");
+                System.out.println("1.Nombre\n2.Alias\n3.Autort\n4.Fecha\n5.Donado\n6.Material\n7.Salir");
+                opcionA = sc.nextInt();
+                
+                sc.nextLine();
+
+                switch (opcionA) 
+                {
+                    case 1:
+                        String nuevoNom;
+                        System.out.println("¿A qué nombre quieres modificar?");
+                        nuevoNom = sc.next();
+                        listaEsc.get(pos).setNombre(nuevoNom);
+                        System.out.println("Se ha cambiado el nombre de " + esculturita + " a " + nuevoNom);
+                        break;
+                    case 2:
+                        String nuevoAlias;
+                        System.out.println("escribe un Alias");
+                        nuevoAlias = sc.nextLine();
+                        System.out.println("Se ha cambiado el Alias de " + listaEsc.get(pos).getAlias());
+                        listaEsc.get(pos).setAlias(nuevoAlias);
+                        System.out.print(" a " + listaEsc.get(pos).getAlias());
+                        break;
+                    case 3:
+                        String nuevoAutor;
+                        System.out.println("Escribe un autor");
+                        nuevoAlias = sc.nextLine();
+                        System.out.println("Se ha cambiado el autor de " + listaEsc.get(pos).getAutor());
+                        nuevoAutor = sc.nextLine();
+                        listaEsc.get(pos).setAutor(nuevoAutor);
+                        System.out.print(" a " + listaEsc.get(pos).getAutor());
+                        break;
+                    case 4:
+                        int nuevaFecha;
+                        System.out.println("Escribe una fecha");
+                        nuevaFecha = sc.nextInt();
+                        System.out.println("Se ha cambiado la fecha de " + listaEsc.get(pos).getFecha());
+                        listaEsc.get(pos).setFecha(nuevaFecha);
+                        System.out.print(" a " + listaEsc.get(pos).getFecha());
+                        break;
+                    case 5:
+                        boolean donado;
+                        System.out.println("Cambiar estado de donado:");
+                        donado = sc.nextBoolean();
+                        System.out.println("Se ha cambiado el estado de " + listaEsc.get(pos).isDonado());
+                        listaEsc.get(pos).setDonado(donado);
+                        System.out.print(" a " + listaEsc.get(pos).isDonado());
+                        break;
+                    case 6:
+                        String material;
+                        System.out.println("Escribe el material: ");
+                        material = sc.nextLine();
+                        System.out.println("Se ha cambiado la tecnica de " + listaEsc.get(pos).getMaterial());
+                        listaEsc.get(pos).setMaterial(material);
+                        System.out.print(" a " + listaEsc.get(pos).getMaterial());
+                        break;
+                    case 7:
+                        break;
                 }
-                listaEsc.remove(pos);
-                System.out.println("Se ha eliminado " + esculturita);
             }
         }
-    }*/
-    public void eliminarPinturas() {
+    
+    }
+    
+    public void eliminarPinturas()
+    {
         int pos = 0;
         System.out.println("¿Que pintura quieres eliminar?");
         pinturita = this.buscarObra(1);
-        if (pinturita.equalsIgnoreCase("")) {
-            System.out.println("no puedes donar un pintura que no existe");
-        } else {
-            for (int i = 0; i < listaPint.size(); i++) {
-                if (listaPint.get(i).getNombre().equalsIgnoreCase(pinturita)) {
+        if (pinturita.equalsIgnoreCase("")) 
+        {
+            System.out.println("no puedes eliminar un pintura que no existe");
+        } 
+        else 
+        {
+            for (int i = 0; i < listaPint.size(); i++) 
+            {
+                if (listaPint.get(i).getNombre().equalsIgnoreCase(pinturita)) 
+                {
                     pos = i;
                 }
             }
             listaPint.remove(pos);
             System.out.println("Se ha eliminado " + pinturita);
+        }
+    }
+    
+    public void eliminarEscultura()
+    {
+        int pos = 0;
+        System.out.println("¿Que escultura quieres eliminar?");
+        esculturita = this.buscarObra(2);
+        if (esculturita.equalsIgnoreCase("")) 
+        {
+            System.out.println("no puedes eliminar un escultura que no existe");
+        } 
+        else 
+        {
+            for (int i = 0; i < listaEsc.size(); i++) 
+            {
+                if (listaEsc.get(i).getNombre().equalsIgnoreCase(esculturita)) 
+                {
+                    pos = i;
+                }
+            }
+            listaEsc.remove(pos);
+            System.out.println("Se ha eliminado " + esculturita);
         }
     }
 }
