@@ -58,7 +58,7 @@ public class Menu
         int intentos=0;
          try
         {
-            while(opcionA<1 || opcionA>2)
+            while(opcionA<1 || opcionA>4)
             {
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();

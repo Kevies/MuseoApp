@@ -65,7 +65,7 @@ public class Login
                     System.out.print("Escribe tu nombre de usuario: ");
                     leerUsuarioC = sc.next();
                     System.out.print("Escribe tu contraseña: ");
-                    leerContraseñaC = userpass;//sc.next();
+                    leerContraseñaC = sc.next();
                     if(leerContraseñaC.equalsIgnoreCase("usuario1234"))
                     {
                         menu1.menuZona(tipo);
@@ -78,7 +78,7 @@ public class Login
                     System.out.print("Escribe tu nombre de usuario:");
                     leerUsuarioC = sc.next();
                     System.out.print("Escribe tu contraseña:");
-                    leerContraseñaC = adminpass;//sc.next();
+                    leerContraseñaC = sc.next();
                     if(leerContraseñaC.equalsIgnoreCase("admin1234"))
                     {
                         menu1.menuZona(tipo2);

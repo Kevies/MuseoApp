@@ -183,8 +183,8 @@ public class Zonapeces extends Zonas {
                     case 2:
                         int nuevoHorario;
                         System.out.println("¿A qué horario quieres modificar?");
-                        System.out.println("Se ha cambiado el horario de " + listaPeces.get(pos).getHorario());
                         nuevoHorario = sc.nextInt();
+                        System.out.println("Se ha cambiado el horario de " + listaPeces.get(pos).getHorario());
                         int intentos=0;
                             while(opcionA<0 || opcionA>24)
                             {
@@ -206,24 +206,24 @@ public class Zonapeces extends Zonas {
                     case 3:
                         String nuevoHabitat;
                         System.out.println("¿A qué habitat quieres modificar?");
-                        System.out.println("Se ha cambiado el habitat de " + listaPeces.get(pos).getHabitat());
                         nuevoHabitat = sc.nextLine();
+                        System.out.println("Se ha cambiado el habitat de " + listaPeces.get(pos).getHabitat());
                         listaPeces.get(pos).setNombre(nuevoHabitat);
                         System.out.print(" a " + listaPeces.get(pos).getHabitat());
                         break;
                     case 4:
                         String nuevaTemporada;
                         System.out.println("¿A qué temporada quieres modificar?");
-                        System.out.println("Se ha cambiado la temporada de " + listaPeces.get(pos).getTemporada());
                         nuevaTemporada = sc.nextLine();
+                        System.out.println("Se ha cambiado la temporada de " + listaPeces.get(pos).getTemporada());
                         listaPeces.get(pos).setNombre(nuevaTemporada);
                         System.out.print(" a " + listaPeces.get(pos).getTemporada());
                         break;
                     case 5:
                         String nuevoTipodeAgua;
                         System.out.println("¿Que tipo de agua es?");
-                        System.out.println("Se ha cambiado el agua de " + listaPeces.get(pos).getTipoAgua());
                         nuevoTipodeAgua = sc.nextLine();
+                        System.out.println("Se ha cambiado el agua de " + listaPeces.get(pos).getTipoAgua());
                         listaPeces.get(pos).setNombre(nuevoTipodeAgua);
                         System.out.print(" a " + listaPeces.get(pos).getTipoAgua());
                         break;
