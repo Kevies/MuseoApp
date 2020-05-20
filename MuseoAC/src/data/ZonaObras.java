@@ -132,12 +132,12 @@ public class ZonaObras extends Zonas {
     public void mostrarObras(int tipo) {
         if (tipo == 1) {
             for (int i = 0; i < listaPint.size(); i++) {
-                System.out.println("- Alias: " + listaPint.get(i).getAlias() + "*** Nombre: " + listaPint.get(i).getNombre());
+                System.out.println("- Alias: " + listaPint.get(i).getAlias() + " | Nombre: " + listaPint.get(i).getNombre());
             }
             System.out.println(SEPARADOR);
         } else {
             for (int i = 0; i < listaEsc.size(); i++) {
-                System.out.println("- Alias: " + listaEsc.get(i).getAlias() + "*** Nombre: " + listaEsc.get(i).getNombre());
+                System.out.println("- Alias: " + listaEsc.get(i).getAlias() + " | Nombre: " + listaEsc.get(i).getNombre());
             }
             System.out.println(SEPARADOR);
         }
@@ -176,14 +176,14 @@ public class ZonaObras extends Zonas {
         if (tipo == 1) {
             for (int i = 0; i < listaPint.size(); i++) {
                 if (listaPint.get(i).isDonado() == false) {
-                    System.out.println("El Obra " + listaPint.get(i).getNombre() + " no esta donado.");
+                    System.out.println("La Obra " + listaPint.get(i).getNombre() + " no esta donado.");
                 }
             }
             System.out.println(SEPARADOR);
         } else {
             for (int i = 0; i < listaEsc.size(); i++) {
                 if (listaEsc.get(i).isDonado() == false) {
-                    System.out.println("El Obra " + listaEsc.get(i).getNombre() + " no esta donado.");
+                    System.out.println("La Obra " + listaEsc.get(i).getNombre() + " no esta donado.");
                 }
             }
             System.out.println(listaEsc);

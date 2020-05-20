@@ -21,7 +21,7 @@ public class Menu
     Scanner sc = new Scanner(System.in);
 
     final String OPCIONES_USER = "1. Donar elemento\n2. Ver todos los elementos\n3. Buscar elementos\n4. Ver elementos donados\n5. Ver elementos restantes\n6. Salir";
-    final String OPCIONES_ADMIN = "1. Añadir elemento\n2. Modificar elemento\n3. Eliminar elemento \n4. Salir";
+    final String OPCIONES_ADMIN = "1. Añadir elemento\n2. Modificar elemento\n3. Eliminar elemento \n4. Ver todos los elementos\n5. Salir";
     final String SEPARADOR = "==========================";
     final String LINEA_FINAL = "introduce un numero: ";
 
@@ -155,7 +155,7 @@ public class Menu
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
                 
-                while(opcionA<1 || opcionA>4)
+                while(opcionA<1 || opcionA>5)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -178,6 +178,9 @@ public class Menu
                         zonaPez.eliminarPez();
                         break;
                     case 4:
+                        zonaPez.mostrarPeces();
+                        break;
+                    case 5:
                         this.menuZona(tipo);
                 }
 
@@ -247,7 +250,7 @@ public class Menu
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
                 
-                while(opcionA<1 || opcionA>4)
+                while(opcionA<1 || opcionA>5)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -270,6 +273,9 @@ public class Menu
                         zonaBichos.eliminarBicho();
                         break;
                     case 4:
+                        zonaBichos.mostrarBichos();
+                        break;
+                    case 5:
                         this.menuZona(tipo);
                 }
                 break;
@@ -369,7 +375,7 @@ public class Menu
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     int intentosss=0;
-                    while(opcionA<1 || opcionA>4)
+                    while(opcionA<1 || opcionA>5)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -393,6 +399,9 @@ public class Menu
                             zonaObras.eliminarPinturas();
                             break;
                         case 4:
+                            zonaObras.mostrarObras(TIPO_ARTE);
+                            break;
+                        case 5:
                             this.menuZona(tipo);
                             break;
                     }
@@ -447,7 +456,7 @@ public class Menu
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     int ints=0;
-                    while(opcionA<1 || opcionA>4)
+                    while(opcionA<1 || opcionA>5)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -472,6 +481,9 @@ public class Menu
                             zonaObras.eliminarEscultura();
                             break;
                         case 4:
+                            zonaObras.mostrarObras(ARTE_TIPO);
+                            break;
+                        case 5:
                             this.menuZona(tipo);
                             break;
                     }
