@@ -108,7 +108,7 @@ public class Menu
                 int in = 0;
                 try
                 {
-                    while(opcionA<1 || opcionA>2)
+                    while(opcionA<1 || opcionA>6)
                     {
                         System.out.print(LINEA_FINAL);
                         opcionA = sc.nextInt();
@@ -155,7 +155,7 @@ public class Menu
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
                 
-                while(opcionA<0 || opcionA>4)
+                while(opcionA<1 || opcionA>4)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -203,7 +203,7 @@ public class Menu
                 int inte=0;
                  try
                     {
-                        while(opcionA<1 || opcionA>2)
+                        while(opcionA<1 || opcionA>6)
                         {
                             System.out.print(LINEA_FINAL);
                             opcionA = sc.nextInt();
@@ -247,7 +247,7 @@ public class Menu
                 System.out.print(LINEA_FINAL);
                 opcionA = sc.nextInt();
                 
-                while(opcionA<0 || opcionA>4)
+                while(opcionA<1 || opcionA>4)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -328,7 +328,7 @@ public class Menu
                     opcionA = sc.nextInt();
                     int intentoss=0;
                     
-                    while(opcionA<0 || opcionA>6)
+                    while(opcionA<1 || opcionA>6)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -369,7 +369,7 @@ public class Menu
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     int intentosss=0;
-                    while(opcionA<0 || opcionA>4)
+                    while(opcionA<1 || opcionA>4)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -408,7 +408,7 @@ public class Menu
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     int intent=0;
-                    while(opcionA<0 || opcionA>6)
+                    while(opcionA<1 || opcionA>6)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
@@ -447,7 +447,7 @@ public class Menu
                     System.out.print(LINEA_FINAL);
                     opcionA = sc.nextInt();
                     int ints=0;
-                    while(opcionA<0 || opcionA>4)
+                    while(opcionA<1 || opcionA>4)
                     {
                         System.out.print("introduce un numero de los indicados: ");
                         opcionA = sc.nextInt();
